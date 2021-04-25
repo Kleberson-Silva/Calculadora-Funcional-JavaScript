@@ -14,7 +14,7 @@ class CalcController{
      
 
 
-     //** */
+     
      initialize()   {
 
         this.setDisplayDateTime();
@@ -31,7 +31,7 @@ class CalcController{
 
         events.split(' ').forEach(event => {
 
-            element.addEventListener(event, fn), false;
+            element.addEventListener(event, fn,false) ;
         });
 
      }
@@ -39,22 +39,51 @@ class CalcController{
 
 
      }
+     clearEntry(){
+
+     }
+     setError(){
+        this.displayCalc = "Error";
+     }
 
      execBtn(value){
 
          switch (value) {
             case 'ac':
-               this.clearAll();
-               break;
+            this.clearAll();
+            break;
             case 'ce':
-               this.clearAll();
-               break;
-            case 'ac':
-               this.clearAll();
-               break;
-         
+            this.clearEntry();
+            break;
+            case 'soma':
+            this.clearAll();
+            break;
+
+            case 'subtracao':
+            this.clearAll();
+            break;
+
+            case 'divisao':
+            this.clearAll();
+            break;
+
+            case 'mitiplicacao':
+            this.clearAll();
+            break;
+
+
+            case 'porcento':
+            this.clearAll();
+            break;
+
+            case 'igual':
+            this.clearAll();
+            break;
+
             default:
+               this.setError();
                break;
+
          }
 
      }
@@ -63,16 +92,16 @@ class CalcController{
 
         let buttons = document.querySelectorAll("#buttons > g, #parts > g");
 
-        this.execBtn();
+        
 
        buttons.forEach((btn, index)=>{
 
-        this.addEventListenerAll(btn,'click drag', e => {
+        this.addEventListenerAll(btn,"click drag", e => {
 
-            let textbtn = btn.className.baseVal.replace("btn-","");
+            console.log(btn.className.baseVal.replace("btn-",""));
         });
 
-        this.addEventListenerAll(btn, "mouseover mouseuo mousedown ", e => {
+        this.addEventListenerAll(btn, "mouseover mouseup mousedown ", e => {
 
             btn.style.cursor = "pointer";
 
