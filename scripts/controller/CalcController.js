@@ -2,13 +2,14 @@ class CalcController{
 
      constructor(){
 
-        this._locale = 'pt-BR';
-        this._displayCalcEl = document.querySelector('#display')
-        this._dateEl = document.querySelector('#data')
-        this._horaEl = document.querySelector('#hora')
-        this._currentDate;
-        this.initialize();
-        this.initButtonsEvents();
+         this._operation = [];
+         this._locale = 'pt-BR';
+         this._displayCalcEl = document.querySelector('#display')
+         this._dateEl = document.querySelector('#data')
+         this._horaEl = document.querySelector('#hora')
+         this._currentDate;
+         this.initialize();
+         this.initButtonsEvents();
      }
      
 
@@ -34,17 +35,42 @@ class CalcController{
         });
 
      }
+     clearAll(){
+
+
+     }
+
+     execBtn(value){
+
+         switch (value) {
+            case 'ac':
+               this.clearAll();
+               break;
+            case 'ce':
+               this.clearAll();
+               break;
+            case 'ac':
+               this.clearAll();
+               break;
+         
+            default:
+               break;
+         }
+
+     }
 
      initButtonsEvents(){
 
         let buttons = document.querySelectorAll("#buttons > g, #parts > g");
 
+        this.execBtn();
+
        buttons.forEach((btn, index)=>{
 
         this.addEventListenerAll(btn,'click drag', e => {
 
-            console.log(btn.className.baseVal.replace("btn-",""));
-        })
+            let textbtn = btn.className.baseVal.replace("btn-","");
+        });
 
         this.addEventListenerAll(btn, "mouseover mouseuo mousedown ", e => {
 
