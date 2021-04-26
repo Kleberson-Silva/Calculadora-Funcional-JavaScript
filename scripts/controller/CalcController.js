@@ -15,7 +15,7 @@ class CalcController{
 
 
      
-     initialize()   {
+     initialize(){
 
         this.setDisplayDateTime();
 
@@ -37,13 +37,29 @@ class CalcController{
      }
      clearAll(){
 
+      this._operation = []{
+
+         this._operation[this._operation.length];
+      }
+
 
      }
      clearEntry(){
 
-     }
+         this._operation.pop();
+    }
+    getLastOperation
+
+      addOperation(value){
+
+         this._operation.push(value);
+
+         console.log(this._operation);
+
+      }
+
      setError(){
-        this.displayCalc = "Error";
+       this.displayCalc = "Error";
      }
 
      execBtn(value){
@@ -56,29 +72,43 @@ class CalcController{
             this.clearEntry();
             break;
             case 'soma':
-            this.clearAll();
+            
             break;
 
             case 'subtracao':
-            this.clearAll();
+            
             break;
 
             case 'divisao':
-            this.clearAll();
+            
             break;
 
             case 'mitiplicacao':
-            this.clearAll();
+            
             break;
 
 
             case 'porcento':
-            this.clearAll();
+            
             break;
 
             case 'igual':
-            this.clearAll();
+            
             break;
+
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+               this.addOperation(parseInt(value));
+
+               break;
 
             default:
                this.setError();
@@ -98,7 +128,10 @@ class CalcController{
 
         this.addEventListenerAll(btn,"click drag", e => {
 
-            console.log(btn.className.baseVal.replace("btn-",""));
+            let textBtn = btn.className.baseVal.replace("btn-","");
+
+            this.execBtn(textBtn);
+
         });
 
         this.addEventListenerAll(btn, "mouseover mouseup mousedown ", e => {
@@ -150,13 +183,13 @@ class CalcController{
         return this._displayCalc.innerHTML;
      }
 
-     set displayCalc(valor){  
+     set displayCalc(value){  
         this._displayCalc.innerHTML = value;
      }
      get currentDate(){
          return new Date();
      }
-     set currentDate(valor){
-       this._currentDate = valor;
+     set currentDate(value){
+       this._currentDate = value;
     }
 }
