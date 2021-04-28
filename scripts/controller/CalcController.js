@@ -475,6 +475,11 @@ class CalcController{
      }
 
          set displayCalc(valor){  
+
+            if(valor.toString().length > 10){
+               this.setError();
+               return false;
+            }
          return this._displayCalcEl.innerHTML = valor;
      }
          get currentDate(){
